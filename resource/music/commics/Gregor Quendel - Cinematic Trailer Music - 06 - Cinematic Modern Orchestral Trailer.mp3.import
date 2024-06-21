@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://6w2cbpfmv8pr"
+path="res://.godot/imported/Gregor Quendel - Cinematic Trailer Music - 06 - Cinematic Modern Orchestral Trailer.mp3-42fadefa505ca369621ae7540226b379.mp3str"
+
+[deps]
+
+source_file="res://resource/music/commics/Gregor Quendel - Cinematic Trailer Music - 06 - Cinematic Modern Orchestral Trailer.mp3"
+dest_files=["res://.godot/imported/Gregor Quendel - Cinematic Trailer Music - 06 - Cinematic Modern Orchestral Trailer.mp3-42fadefa505ca369621ae7540226b379.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

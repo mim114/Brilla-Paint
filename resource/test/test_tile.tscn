@@ -1,0 +1,49 @@
+[gd_scene load_steps=12 format=3 uid="uid://cyl3710ck5c1a"]
+
+[ext_resource type="Texture2D" uid="uid://ctinrvb47r6he" path="res://resource/image/prototype/ladder.png" id="1_f4oea"]
+[ext_resource type="Texture2D" uid="uid://yme4bgoted0t" path="res://resource/image/prototype/brick.png" id="1_hdclv"]
+[ext_resource type="Texture2D" uid="uid://dn7avx87qutl5" path="res://resource/image/prototype/platform.png" id="3_ff17b"]
+[ext_resource type="Texture2D" uid="uid://dit1tsrjh0m1q" path="res://resource/image/prototype/spike.png" id="4_ugtak"]
+[ext_resource type="Texture2D" uid="uid://bsfga0f5vy3l8" path="res://resource/image/prototype/crate.png" id="5_dkbgt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jhk70"]
+texture = ExtResource("1_f4oea")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d4q0f"]
+texture = ExtResource("1_hdclv")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2kq5l"]
+texture = ExtResource("3_ff17b")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, -32, -64, -31)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fy5vh"]
+texture = ExtResource("4_ugtak")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-36.5, 6, 35.5, 7, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ys8w"]
+texture = ExtResource("5_dkbgt")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_2okcp"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 16
+physics_layer_0/collision_mask = 7
+sources/1 = SubResource("TileSetAtlasSource_d4q0f")
+sources/0 = SubResource("TileSetAtlasSource_jhk70")
+sources/2 = SubResource("TileSetAtlasSource_2kq5l")
+sources/3 = SubResource("TileSetAtlasSource_fy5vh")
+sources/4 = SubResource("TileSetAtlasSource_4ys8w")
+
+[node name="TestTile" type="TileMapLayer"]
+tile_set = SubResource("TileSet_2okcp")

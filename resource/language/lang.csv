@@ -1,0 +1,30 @@
+id,en,ru
+key_new,New,Новая
+key_load,Load,Загрузить
+key_master,Master,Главный
+key_music,Music,Музыка
+key_resolution,Resolution,Разрешение
+key_window_mode,Window Mode,Оконный Режим
+key_fullscreen,Fullscreen,Полноэкранный
+key_brightness,Brightness,Яркость
+key_move,Move,Двигаться
+key_dash,Dash,Мчаться
+key_jump,Jump,Прыгать
+key_shoot,Shoot,Стрелять
+key_attack,Attack,Атака
+key_interact,Interact,Взаимодействовать
+key_pause,Pause,Пауза
+key_map,Map,Карта
+key_sound,Sound,Звук
+key_PAUSE,PAUSE,ПАУЗА
+key_lost,All unsaved progress will be lost.,Весь несохраненный прогресс будет потерян.
+key_sure,Are you sure?,Вы уверены?
+key_select_language,English,Русский
+key_language,Language,Язык
+key_graphics,Graphics,Графика
+key_control,Control,Контроль
+key_enter,Enter,Ввести
+key_left,Left,Влево
+key_right,Right,Вправо
+key_up,Up,Вверх
+key_down,Down,Вниз

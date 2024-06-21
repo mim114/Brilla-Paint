@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://1njjpy4nmtnr"
+path="res://.godot/imported/05 - DavidKBD - Purgatory Pack - From the Dark Past.ogg-92ec6e25c5492e6c7e3658163315f59b.oggvorbisstr"
+
+[deps]
+
+source_file="res://resource/music/boss/05 - DavidKBD - Purgatory Pack - From the Dark Past.ogg"
+dest_files=["res://.godot/imported/05 - DavidKBD - Purgatory Pack - From the Dark Past.ogg-92ec6e25c5492e6c7e3658163315f59b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

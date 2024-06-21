@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://con0fqcipinds"
+path="res://.godot/imported/06 - DavidKBD - Purgatory Pack - On Fire.ogg-911928242bb693eef9025c6ee5688cb8.oggvorbisstr"
+
+[deps]
+
+source_file="res://resource/music/boss/06 - DavidKBD - Purgatory Pack - On Fire.ogg"
+dest_files=["res://.godot/imported/06 - DavidKBD - Purgatory Pack - On Fire.ogg-911928242bb693eef9025c6ee5688cb8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
