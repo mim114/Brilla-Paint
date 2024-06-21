@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bdlt3uorn01w5"]
+[gd_scene load_steps=37 format=3 uid="uid://bdlt3uorn01w5"]
 
 [ext_resource type="Texture2D" uid="uid://cm8a1i15pgxi6" path="res://resource/image/player/player-sheet.png" id="1_4sup2"]
 [ext_resource type="Texture2D" uid="uid://qf5mhltlkf0y" path="res://resource/image/player/player-sheet_n.png" id="2_fvidv"]
@@ -12,6 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://l4gwdh48ftu8" path="res://resource/sound/player/SwordSwing1.wav" id="9_2tc8j"]
 [ext_resource type="AudioStream" uid="uid://d0i73djdslbx2" path="res://resource/sound/player/SwordSwing2.wav" id="10_l48wm"]
 [ext_resource type="AudioStream" uid="uid://hugeieith010" path="res://resource/sound/player/SwordSwing3.wav" id="11_efr75"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="13_e1p13"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="14_yygd2"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="15_xm06l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhkak"]
 radius = 24.0
@@ -405,3 +408,340 @@ autoplay = "idle"
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("3_epqlq")
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("13_e1p13")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toRun" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Run")
+event = &"to run"
+delay_in_seconds = "0.0"
+
+[node name="toReady" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Ready")
+event = &"to ready"
+delay_in_seconds = "0.0"
+
+[node name="toClimb" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Climb")
+event = &"to climb"
+delay_in_seconds = "0.0"
+
+[node name="to Attack" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Attack")
+event = &"to attack"
+delay_in_seconds = "0.0"
+
+[node name="toShoot" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Shoot")
+event = &"to shoot"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="toInteract" type="Node" parent="StateChart/CompoundState/Idle"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Interact")
+event = &"to interact"
+delay_in_seconds = "0.0"
+
+[node name="Run" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Run"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/Run"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="toAttack" type="Node" parent="StateChart/CompoundState/Run"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Attack")
+event = &"to attack"
+delay_in_seconds = "0.0"
+
+[node name="toShoot" type="Node" parent="StateChart/CompoundState/Run"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Shoot")
+event = &"to shoot"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Run"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="Jump" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/Jump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="toAttackInJump" type="Node" parent="StateChart/CompoundState/Jump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../AttackInJump")
+event = &"to attack in jump"
+delay_in_seconds = "0.0"
+
+[node name="toShootInJump" type="Node" parent="StateChart/CompoundState/Jump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../ShootInJump")
+event = &"to shoot in jump"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Jump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="Dash" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Dash"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/Dash"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="Climb" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Climb"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Climb"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="Fall" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toLanding" type="Node" parent="StateChart/CompoundState/Fall"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Landing")
+event = &"to landing"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Fall"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="toAttackInJump" type="Node" parent="StateChart/CompoundState/Fall"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../AttackInJump")
+event = &"to attack in jump"
+delay_in_seconds = "0.0"
+
+[node name="toShootInJump" type="Node" parent="StateChart/CompoundState/Fall"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../ShootInJump")
+event = &"to shoot in jump"
+delay_in_seconds = "0.0"
+
+[node name="Hung" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/Hung"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="toJump" type="Node" parent="StateChart/CompoundState/Hung"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Jump")
+event = &"to jump"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Hung"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="Landing" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Landing"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="Ready" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Ready"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Ready"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="toSuperJump" type="Node" parent="StateChart/CompoundState/Ready"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../SuperJump")
+event = &"to super jump"
+delay_in_seconds = "0.0"
+
+[node name="toDash" type="Node" parent="StateChart/CompoundState/Ready"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Dash")
+event = &"to dash"
+delay_in_seconds = "0.0"
+
+[node name="SuperJump" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toJump" type="Node" parent="StateChart/CompoundState/SuperJump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Jump")
+event = &"to jump"
+delay_in_seconds = "0.0"
+
+[node name="Attack" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Attack"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Attack"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="toAttack" type="Node" parent="StateChart/CompoundState/Attack"]
+script = ExtResource("15_xm06l")
+to = NodePath("..")
+event = &"to attack"
+delay_in_seconds = "0.0"
+
+[node name="toShoot" type="Node" parent="StateChart/CompoundState/Attack"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Shoot")
+event = &"to shoot"
+delay_in_seconds = "0.0"
+
+[node name="AttackInJump" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/AttackInJump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="Shoot" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Shoot"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toHurt" type="Node" parent="StateChart/CompoundState/Shoot"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Hurt")
+event = &"to hurt"
+delay_in_seconds = "0.0"
+
+[node name="toAttack" type="Node" parent="StateChart/CompoundState/Shoot"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Attack")
+event = &"to attack"
+delay_in_seconds = "0.0"
+
+[node name="toShoot" type="Node" parent="StateChart/CompoundState/Shoot"]
+script = ExtResource("15_xm06l")
+to = NodePath("..")
+event = &"to shoot"
+delay_in_seconds = "0.0"
+
+[node name="ShootInJump" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/ShootInJump"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="Interact" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Interact"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="Hurt" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
+
+[node name="toIdle" type="Node" parent="StateChart/CompoundState/Hurt"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Idle")
+event = &"to idle"
+delay_in_seconds = "0.0"
+
+[node name="toDie" type="Node" parent="StateChart/CompoundState/Hurt"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Die")
+event = &"to die"
+delay_in_seconds = "0.0"
+
+[node name="toFall" type="Node" parent="StateChart/CompoundState/Hurt"]
+script = ExtResource("15_xm06l")
+to = NodePath("../../Fall")
+event = &"to fall"
+delay_in_seconds = "0.0"
+
+[node name="Die" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("14_yygd2")
