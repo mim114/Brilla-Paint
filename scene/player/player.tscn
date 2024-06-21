@@ -1,8 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://bdlt3uorn01w5"]
+[gd_scene load_steps=34 format=3 uid="uid://bdlt3uorn01w5"]
 
 [ext_resource type="Texture2D" uid="uid://cm8a1i15pgxi6" path="res://resource/image/player/player-sheet.png" id="1_4sup2"]
 [ext_resource type="Texture2D" uid="uid://qf5mhltlkf0y" path="res://resource/image/player/player-sheet_n.png" id="2_fvidv"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_epqlq"]
+[ext_resource type="AudioStream" uid="uid://cai3nt7n4g2ws" path="res://resource/sound/player/die.mp3" id="3_lhrtc"]
+[ext_resource type="AudioStream" uid="uid://cl40eebhpkcg8" path="res://resource/sound/player/hint.mp3" id="4_tq2yx"]
+[ext_resource type="AudioStream" uid="uid://b24x2066p54vv" path="res://resource/sound/player/hurt.wav" id="5_m0uv8"]
+[ext_resource type="AudioStream" uid="uid://4c5f6o3nsc6w" path="res://resource/sound/player/jump.wav" id="6_wsqvj"]
+[ext_resource type="AudioStream" uid="uid://btbldw8iv5uqt" path="res://resource/sound/player/run.wav" id="7_afopy"]
+[ext_resource type="AudioStream" uid="uid://tf8fghhbdo1o" path="res://resource/sound/player/shoot.mp3" id="8_r5y6x"]
+[ext_resource type="AudioStream" uid="uid://l4gwdh48ftu8" path="res://resource/sound/player/SwordSwing1.wav" id="9_2tc8j"]
+[ext_resource type="AudioStream" uid="uid://d0i73djdslbx2" path="res://resource/sound/player/SwordSwing2.wav" id="10_l48wm"]
+[ext_resource type="AudioStream" uid="uid://hugeieith010" path="res://resource/sound/player/SwordSwing3.wav" id="11_efr75"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rhkak"]
 radius = 24.0
@@ -350,13 +359,49 @@ vframes = 16
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
+[node name="Sound" type="Node" parent="."]
+
+[node name="Die" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("3_lhrtc")
+bus = &"Sound"
+
+[node name="Hint" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("4_tq2yx")
+bus = &"Sound"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("5_m0uv8")
+bus = &"Sound"
+
+[node name="Jump" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("6_wsqvj")
+bus = &"Sound"
+
+[node name="Run" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("7_afopy")
+bus = &"Sound"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("8_r5y6x")
+bus = &"Sound"
+
+[node name="SwordSwing1" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("9_2tc8j")
+bus = &"Sound"
+
+[node name="SwordSwing2" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("10_l48wm")
+bus = &"Sound"
+
+[node name="SwordSwing3" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("11_efr75")
+bus = &"Sound"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_2eui7")
 }
 autoplay = "idle"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("3_epqlq")
